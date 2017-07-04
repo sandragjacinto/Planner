@@ -69,10 +69,14 @@ function selectRecipes()
     {
         var contentRecipeTitle = currentRecipes[i].recipe.label;
         let li = document.createElement("li");
-        let liContent = document.createTextNode(contentRecipeTitle);
-        li.appendChild(liContent);
-        htmlRecipeList.appendChild(li);
+/*        let liContent = document.createTextNode(contentRecipeTitle);
+        li.appendChild(liContent) 
+        htmlRecipeList.appendChild(li); */
         incRecipeSelection++;
+
+        $('#currentRecipes').append('<li class="list-group-item">'+'<h5>'+contentRecipeTitle+'</h5>'+ '<input type="checkbox">'); 
+
+
 
         currentRecipesSelected.push(currentRecipes[i]);
         if(incRecipeSelection >= userRecipeSelection)
