@@ -19,16 +19,25 @@ var userKeyword = "";
 var htmlRecipeList = document.getElementById("currentRecipes");
 var htmlIngredientList = document.getElementById("currentIngredients");
 
-//Html references
+//listener for search field
 $('#SearchRecipeBtn').click(function(){
 var userKeyword = $('#KeywordRecipeField').val();
-
 //Get recipes with a keyword. Once answer is recieved, executes onSearchResponse
 getRecipes(userKeyword);
 });
-//Ask user for keyword
-//userKeyword = prompt("Enter a keyword:");
 
+//listener for accept selection field
+console.log("before accept listener");
+$('#AcceptSelectionBtn').click(function(){
+         console.log ('olafsdfdsf');
+
+    /*$('#currentRecipes').children('li').each(function(i) { 
+     
+     console.log ('ola');
+
+     //$(this).rotate(ring.stones[i].stone_rotation);
+    }); */
+});
 
 
 function appendParameterToUrl(url, parameterName, parameterValue)
@@ -60,7 +69,7 @@ function onSearchResponse(data)
 
     htmlFillRawIngredientsList(rawIngredients);
 }
-
+//todo: rename this. rather is displaying all recipes
 function selectRecipes()
 {
    var userRecipeSelection = 5;//prompt("Select recipes. First x recipes:");
@@ -73,10 +82,11 @@ function selectRecipes()
         li.appendChild(liContent) 
         htmlRecipeList.appendChild(li); */
         incRecipeSelection++;
+        var CheckboxIdIndex = "ChooseRecipe_"+i
+        $('#currentRecipes').append('<li class="list-group-item">'+'<h5>'+contentRecipeTitle+'</h5>'+ '<input type="checkbox" ' + "id="+ '\''+ CheckboxIdIndex+ '\'' +'>'); 
 
-        $('#currentRecipes').append('<li class="list-group-item">'+'<h5>'+contentRecipeTitle+'</h5>'+ '<input type="checkbox">'); 
-
-
+        var testId = '<li class="list-group-item" id=RecipeItem>'+'<h5>'+contentRecipeTitle+'</h5>'+ '<input type="checkbox" ' + "id="+ '\''+ CheckboxIdIndex+ '\'' +'>'; 
+       // console.log (testId)
 
         currentRecipesSelected.push(currentRecipes[i]);
         if(incRecipeSelection >= userRecipeSelection)
@@ -84,6 +94,10 @@ function selectRecipes()
             break;
         }
     }
+
+
+
+
 }
 
 function getIngredientsFromRecipes(recipes)
