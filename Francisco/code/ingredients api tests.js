@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 var currentRecipeIds = [];
 var currentRecipes = {};
 var currentRecipesSelected = [];
@@ -13,15 +15,21 @@ const baseUrlRecipe = "https://api.edamam.com/search?app_id=b03b6d4c&app_key=a9c
 //User selections
 var userKeyword = "";
 
-//Html references
+
 var htmlRecipeList = document.getElementById("currentRecipes");
 var htmlIngredientList = document.getElementById("currentIngredients");
 
-//Ask user for keyword
-userKeyword = prompt("Enter a keyword:");
+//Html references
+$('#SearchRecipeBtn').click(function(){
+var userKeyword = $('#KeywordRecipeField').val();
 
 //Get recipes with a keyword. Once answer is recieved, executes onSearchResponse
 getRecipes(userKeyword);
+});
+//Ask user for keyword
+//userKeyword = prompt("Enter a keyword:");
+
+
 
 function appendParameterToUrl(url, parameterName, parameterValue)
 {
@@ -55,7 +63,7 @@ function onSearchResponse(data)
 
 function selectRecipes()
 {
-    var userRecipeSelection = prompt("Select recipes. First x recipes:");
+   var userRecipeSelection = 5;//prompt("Select recipes. First x recipes:");
     var incRecipeSelection = 0;
     for(var i in currentRecipes)
     {
@@ -109,3 +117,7 @@ function htmlFillRawIngredientsList(rawIngredients)
         htmlIngredientList.appendChild(li);
     }
 }
+
+
+
+})
