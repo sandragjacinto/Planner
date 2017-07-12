@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    
+    //test
 
     var currentRecipeIds = [];
     var currentRecipes = {};
