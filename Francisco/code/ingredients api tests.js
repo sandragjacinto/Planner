@@ -1,6 +1,4 @@
 $(document).ready(function () {
-    
-    //test
 
     var currentRecipeIds = [];
     var currentRecipes = {};
@@ -185,5 +183,7 @@ $(document).ready(function () {
             htmlRecipeTitlesList.appendChild(li);
         }
     }
+
+    //test
 
 })
